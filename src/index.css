@@ -16,3 +16,16 @@
   margin: 16px;
   background: rgba(255, 255, 255, 0.3);
 }
+
+.logo {
+  height: 80px;
+  background:transparent;
+  text-align: center;
+  padding: 20px 0px;
+  font-weight: 750;
+  font-size: 1rem;
+  color: #fff;
+
+  
+
+}

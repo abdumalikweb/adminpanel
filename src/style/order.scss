@@ -1,0 +1,25 @@
+.order_title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.card_info {
+  display: flex;
+  justify-content: space-between;
+}
+.card_link {
+  font-weight: 500;
+}
+.card_info {
+  padding-top: 10px;
+  flex-wrap: wrap;
+  font-weight: 500;
+}
+.card_desc {
+  padding-top: 10px;
+}
+.card_order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
