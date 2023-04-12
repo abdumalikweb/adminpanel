@@ -1,5 +1,23 @@
-import { Space, Table, Tag } from 'antd';
+import {  Button, Modal, Space, Table, Tag } from 'antd';
+import  {UsergroupAddOutlined } from '@ant-design/icons'
+import "../style/addwork.scss"
+import  {useState}  from 'react';
+import {   Form, Input } from 'antd';
+
+
+
+
+const onFinish = (values) => {
+  console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
+
+
 const { Column, ColumnGroup } = Table;
+
+
 const data = [
   {
     key: '1',
@@ -9,26 +27,39 @@ const data = [
     address: 'New York No. 1 Lake Park',
     tags: ['MangoDB', 'Node js', 'Next js'],
   },
-  {
-    key: '2',
-    firstName: 'Jim',
-    lastName: 'Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['Javascript', 'React js','Vue js'],
-  },
-  {
-    key: '3',
-    firstName: 'Joe',
-    lastName: 'Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['PHP', 'Laravel'],
-  },
+
 ];
-const Addwork = () => (
+const Addwork = () =>{ 
+  ///////////////Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+/////
   
+  
+  
+  
+  
+  return(
+
+  
+  <>
+  <div className='row'>
+    <h2>Specialist</h2> 
+     <Space wrap>
+    <Button type="primary" onClick={showModal}><UsergroupAddOutlined /> Add </Button>
+  </Space>
+  </div>
   <Table dataSource={data}>
+    
     <ColumnGroup >
       <Column title="First Name" dataIndex="firstName" key="firstName" />
       <Column title="Last Name" dataIndex="lastName" key="lastName" />
@@ -63,10 +94,73 @@ const Addwork = () => (
      />
     
   </Table>
-  
-  
 
-);
+<Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+    <Form
+    name="basic"
+    labelCol={{
+      span: 24,
+    }}
+    wrapperCol={{
+      span: 24,
+    }}
+    style={{
+      maxWidth: 600,
+    }}
+    initialValues={{
+      remember: true,
+    }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete="off"
+  >
+    <Form.Item
+      label="FistName"
+      name="FistName"
+      rules={[
+        {
+          required: true,
+        },
+      ]}
+    >
+      <Input  />
+    </Form.Item>
+
+    <Form.Item
+      label="LastName"
+      name="LastName"
+      rules={[
+        {
+          required: true,
+          placeholder: "salom",
+          
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item
+      label="Address"
+      name="Address"
+      rules={[
+        {
+          required: true,
+         
+          
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item>
+ 
+
+  </Form>
+      </Modal>
+  
+  </>
+
+)};
 export default Addwork;
 
 
